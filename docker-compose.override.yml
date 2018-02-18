@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  api:
+    image: go-multi-stage-dev:latest
+    build:
+      context: .
+      dockerfile: docker/dev/Dockerfile
+    environment:
+      APP_ENV: "local"
+    volumes:
+      - .:/go/src/app
+    ports:
+      - 8080:3000
+    command: ["/init.sh"]

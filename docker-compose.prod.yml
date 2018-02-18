@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  api:
+    image: go-multi-stage:latest
+    build:
+      context: .
+      dockerfile: docker/prod/Dockerfile
+    environment:
+      APP_ENV: "prod"
+    volumes:
+      - .:/go/src/app
+    ports:
+      - 8080:3000
